@@ -5,14 +5,8 @@ supposed to.
 The logger is used to write error messages and the like to a log.txt file.
 """
 import unittest
+import package.code.logger as logger
 
-# import the module via the absolute path provided below.
-# will need to be rewritten if on a different machine.
-MODULE_PATH = 'H:\\data\\IT\\ProcessEng\\Mahlo\\mahloprocessor\\code\\logger.py'
-import importlib.util
-spec = importlib.util.spec_from_file_location("logger", MODULE_PATH)
-logger = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(logger)
 
 class TestLogger(unittest.TestCase):
     LOG_FILE = 'test-logger.txt'
@@ -58,6 +52,6 @@ class TestLogger(unittest.TestCase):
             for i,w in enumerate(written_data):
                 if len(w) > 0:
                     self.assertEqual(self.log_items[i], w.split("] ")[1])
-
-if __name__ == '__main__':
-    unittest.main()
+                    
+# if __name__ == '__main__':
+#     unittest.main()

@@ -20,7 +20,7 @@ class Logger():
         self.log_path = in_settings['logpath']
         self.log_cache = []
 
-    def logAction(self, inActionText):
+    def logAction(self, inActionText, autoWrite=False):
         """
         The logAction method takes in a error message (or log message) from the 
         calling code and stores the item in its object cache (a list, as the
@@ -32,6 +32,7 @@ class Logger():
         """
         time_text = '[{}]'.format(strftime('%Y-%m-%d %H:%M:%S', localtime()))
         self.log_cache.append('{} {}\n'.format(time_text, inActionText))
+        if autoWrite: self.writeOut()
 
     def writeOut(self):
         """
